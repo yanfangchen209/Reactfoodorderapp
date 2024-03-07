@@ -1,0 +1,31 @@
+/* PageNavigation.module.css */
+
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.list li {
+  margin-right: 150px;
+}
+
+/* Style for NavLink */
+.list li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 26px;
+  transition: color 0.3s ease-in-out;
+}
+
+.list li a:hover {
+  color: #4caf50; /* Change color on hover */
+}
+
+/* Style for active NavLink */
+.list li a.active {
+  color: #4caf4e; /* Active link color */
+}

@@ -1,0 +1,16 @@
+/* FoodList.module.css */
+
+.foodlist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  /* Optionally, you can add styles for responsiveness */
+  @media (max-width: 768px) {
+    .foodlist {
+      justify-content: center;
+    }
+  }
+  

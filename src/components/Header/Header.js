@@ -1,13 +1,18 @@
-import React from 'react'
-
+import React, { Fragment } from 'react'
+import classes from "./Header.module.css"
+import PageNavigation from './PageNavigation';
+import HeaderCartButton from './HeaderCartButton';
 
 export const Header = () => {
   return (
-    <div className='foodapp-name'>
-        <h1>Firestone</h1>
-        <img src="shoppingcart.jpg" />
-        <p>Your Cart</p>
-    </div>
+    <Fragment>
+      <header className={classes.header}>
+        <PageNavigation />
+        <button>Sign In</button>
+        <HeaderCartButton />
+      </header>
+    </Fragment>
+
   )
 }
 

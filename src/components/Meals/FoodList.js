@@ -1,14 +1,13 @@
 import React from 'react'
 import FoodItem from './FoodItem';
+import classes from './FoodList.module.css';
 
-export const FoodList = ({data}) => {
-  
-
+export const FoodList = ({mealData}) => {
 
   return (
-    
-    <div>
-        {data.map(item => <FoodItem getAmount={getAmount} key={item.id} name={item.name} intro={item.intro} cost={item.cost} />)}
+    <div className={classes.foodlist}>
+      {mealData.map(item => <FoodItem key={item.id} id={item.id} name={item.name} 
+        description={item.description} price={item.price} photo={item.photo} />)}
     </div>
   )
 }

@@ -1,21 +1,14 @@
-import React, { useState } from 'react'
-
-export const FoodItem = ({name, intro, cost, getAmount}) => {
-    const [amount, setAmount] = useState(0);
-    const addHandler = () => {
-        setAmount(amount + 1);
-    }
-    getAmount(amount);
-
+import React from 'react'
+import classes from './FoodItem.module.css'
+export const FoodItem = ({id, name, description, price, photo}) => {
   return (
-    <div>
-        <p>{name}</p>
-        <p>{intro}</p>
-        <div>${cost}</div>
-        <label>Amount</label>
-        <input type="number"  value={amount}></input>
-        <button type="button" onClick={addHandler}>+Add</button>
-    </div>
+    <li className={classes.li}>
+        <div><img src={photo} alt="food"></img></div>
+        <h3>{name}</h3>
+        <div>{description}</div>
+        <div>${price}</div>
+        <button>Add To Cart</button>
+    </li>
   )
 }
- export default FoodItem;
+export default FoodItem;
