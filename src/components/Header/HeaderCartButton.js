@@ -7,7 +7,7 @@ export const HeaderCartButton = () => {
   return (
     <button className={classes.cartbutton}>
         <FontAwesomeIcon icon={faShoppingCart} />
-        <span>Your Cart</span>
+        <span>Cart</span>
         <span className={classes.itemcount}>3</span>
     </button>
 

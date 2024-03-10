@@ -1,9 +1,10 @@
-
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import HomePage from './components/Homepage/HomePage';
-import FoodList from './components/Meals/FoodList';
-import CareerPage from './components/Careerpage/CareerPage';
 import CommonHeader from './components/Header/CommonHeader';
+import HomePage from './components/Home/HomePage';
+import FoodList from './components/Food/FoodList';
+import CareerPage from './components/Career/CareerPage';
+import Cart from './components/Cart/CartItem';
+
 import sushi from './assets/SalmonNigiri.jpg'
 import burger from './assets/ClassicBeefBurger.jpg'
 import pizza from './assets/MargheritaPizza.jpg'
@@ -17,6 +18,8 @@ import icecream from './assets/IceCream.jpg'
 import curry from './assets/chickencurry.jpg'
 import burrito from './assets/veggieburrito.jpg'
 import cake from './assets/cake.jpg'
+
+
 
 //photo: "https://i5.walmartimages.com/seo/Hello-Kitty-Round-Cake_c4c83c9b-b195-4c25-809e-0aef7d78059c.a706b7ad927e544723321452773153be.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"
 function App() {
@@ -39,14 +42,16 @@ function App() {
 
   ];
 
+
   //pageNavigation act as a wrapper for comonents: HomePage, FoodList, CareerPage
   const router = createBrowserRouter([
     {path: '/', 
-    element: <CommonHeader />,
+    element: <CommonHeader  />,
     children: [
       {path: '/', element: <HomePage />},
       {path: '/food', element: <FoodList mealData={mealData}/>},
-      {path: '/career', element: <CareerPage />}
+      {path: '/career', element: <CareerPage />},
+      {path: '/cart', element: <Cart/>}
     ]
     }
 

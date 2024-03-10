@@ -1,22 +1,21 @@
 import React from 'react'
-import classes from './Cart.module.css'
+import CartItem from './CartItem'
 
 export const Cart = () => {
-    const cartItems = [{id: 'e3', name: "chips", description: "uyg ggdsg dgdg dg", price: 30.45}].map(item => <li>{item.name}</li>)
-
   return (
-    <>
-        <ul className={classes['cart-items']}>
-            {cartItems}
-        </ul>
+    <div>
+        <CartItem />
         <div>
-            <span>Total Amount:</span>
-            <span>$30.45</span>
+            <span>Subtotal:</span>
+            <span>$243.44</span>
         </div>
-        <div>order</div>
-    </>
-
+        <div>
+            <span>Total items:</span>
+            <span>5</span>
+        </div>
+        <button>Continue to check out</button>
+    </div>
   )
 }
 
-export default Cart
+export default Cart;
