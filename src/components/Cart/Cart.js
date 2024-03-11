@@ -1,19 +1,26 @@
-import React from 'react'
-import CartItem from './CartItem'
+import React, { useContext } from 'react'
+import CartItemList from './CartItemList'
+import CartContext from '../../store/cart-context'
 
 export const Cart = () => {
+    const cartCtx = useContext(CartContext);
+    const checkOutHandler = () => {
+        console.log("test check out click");
+    }
+
   return (
     <div>
-        <CartItem />
+        <h1>Your Cart</h1>
         <div>
             <span>Subtotal:</span>
-            <span>$243.44</span>
+            <span>${cartCtx.totalAmount}</span>
         </div>
         <div>
             <span>Total items:</span>
-            <span>5</span>
+            <span>{cartCtx.numOfTotalItems}</span>
         </div>
-        <button>Continue to check out</button>
+        <CartItemList />
+        <button onClick={checkOutHandler}>Continue to check out</button>
     </div>
   )
 }

@@ -18,6 +18,7 @@ import icecream from './assets/IceCream.jpg'
 import curry from './assets/chickencurry.jpg'
 import burrito from './assets/veggieburrito.jpg'
 import cake from './assets/cake.jpg'
+import CartProvider from './store/CartProvider';
 
 
 
@@ -63,9 +64,9 @@ function App() {
   
 
   return (
-    <div>
+    <CartProvider>
       <RouterProvider router={router} />
-    </div>
+    </CartProvider>
   );
 }
 
