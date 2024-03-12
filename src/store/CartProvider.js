@@ -35,7 +35,7 @@ const cartReducer = (state, action) => {
             numOfTotalItems: updatedNumOfTotalItems
         }
     }
-    if(action.type === 'Delete'){
+    if(action.type === 'REMOVE'){
         //why not const updatedItems??
         let updatedItems;
         const deletedSubtotal = action.item.price * action.item.amount;
@@ -78,7 +78,7 @@ const cartReducer = (state, action) => {
 
         }
     }
-    return defaultCartState;
+    return state;
 }
 
 

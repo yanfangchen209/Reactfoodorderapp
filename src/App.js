@@ -3,8 +3,7 @@ import CommonHeader from './components/Header/CommonHeader';
 import HomePage from './components/Home/HomePage';
 import FoodList from './components/Food/FoodList';
 import CareerPage from './components/Career/CareerPage';
-import Cart from './components/Cart/CartItem';
-
+import Cart from './components/Cart/Cart';
 import sushi from './assets/SalmonNigiri.jpg'
 import burger from './assets/ClassicBeefBurger.jpg'
 import pizza from './assets/MargheritaPizza.jpg'

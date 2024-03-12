@@ -1,0 +1,17 @@
+/* CartItemList.module.css */
+
+.foodlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Optional styling for list items (CartItems) */
+  .foodlist li {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  

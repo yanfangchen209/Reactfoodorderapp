@@ -26,6 +26,6 @@ export const FoodItem = ({id, name, description, price, photo}) => {
         div>
         <button onClick={addToCartHandler}>Add To Cart</button>
     </li>
-  )
+  );
 }
 export default FoodItem;
