@@ -4,6 +4,8 @@ import HomePage from './components/Home/HomePage';
 import FoodList from './components/Food/FoodList';
 import CareerPage from './components/Career/CareerPage';
 import Cart from './components/Cart/Cart';
+import Checkout from './components/Checkout/Checkout';
+
 import sushi from './assets/SalmonNigiri.jpg'
 import burger from './assets/ClassicBeefBurger.jpg'
 import pizza from './assets/MargheritaPizza.jpg'
@@ -25,7 +27,7 @@ import CartProvider from './store/CartProvider';
 function App() {
 
   const mealData = [
-    {id: "e1", name:"Classic Beef Burger", description: "A juicy beef patty with fresh lettuce, tomatoes, onions, and special sauce", price: 8.99, photo: burger}, 
+    {id: "e1", name:"Classic Beef Burger", description: "A juicy beef patty with fresh lettuce, tomatoes, onions, and special sauce", price: 8.992, photo: burger}, 
     {id: "e2", name: "Salmon Nigiri", description: "Fresh slices of salmon atop bite-sized portions of seasoned rice", price: 14.99, photo: sushi},
     {id: "e3", name: "Margherita Pizza", description: "with tomato sauce, fresh mozzarella cheese, basil leaves, and a drizzle of olive oil.", price: 12.99, photo: pizza},
     {id: "e4", name: "Spaghetti Bolognese", description: "Al dente spaghetti noodles tossed in a rich and savory Bolognese sauce made with ground beef, tomatoes, and herbs.", price: 10.99, photo: pasta},
@@ -51,7 +53,9 @@ function App() {
       {path: '/', element: <HomePage />},
       {path: '/food', element: <FoodList mealData={mealData}/>},
       {path: '/career', element: <CareerPage />},
-      {path: '/cart', element: <Cart/>}
+      {path: '/cart', element: <Cart/>},
+      {path: '/checkout', element: <Checkout />}
+
     ]
     }
 

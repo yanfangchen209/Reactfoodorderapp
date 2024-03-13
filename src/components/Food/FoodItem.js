@@ -4,6 +4,7 @@ import CartContext from '../../store/cart-context'
 
 export const FoodItem = ({id, name, description, price, photo}) => {
   const cartCtx = useContext(CartContext);
+  const standardPrice = `$${price.toFixed(2)}`;
 
 
   const addToCartHandler = () => {
@@ -22,8 +23,7 @@ export const FoodItem = ({id, name, description, price, photo}) => {
         <div><img src={photo} alt="food"></img></div>
         <h3>{name}</h3>
         <div>{description}</div>
-        <div>${price}</       
-        div>
+        <div>{standardPrice}</div>
         <button onClick={addToCartHandler}>Add To Cart</button>
     </li>
   );

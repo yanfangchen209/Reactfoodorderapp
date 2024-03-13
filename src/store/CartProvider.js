@@ -46,9 +46,8 @@ const cartReducer = (state, action) => {
         return {
             items: updatedItems,
             totalAmount: updatedTotalAmount,
-            updatedNumOfTotalItems: updatedNumOfTotalItems
+            numOfTotalItems: updatedNumOfTotalItems
         }
-
 
     }
     if(action.type === 'SETAMOUNT'){
@@ -62,7 +61,7 @@ const cartReducer = (state, action) => {
             return {
                 items: updatedItems,
                 totalAmount: updatedTotalAmount,
-                updatedNumOfTotalItems: updatedNumOfTotalItems
+                numOfTotalItems: updatedNumOfTotalItems
             }
 
         }else{
@@ -73,7 +72,7 @@ const cartReducer = (state, action) => {
             return {
                 items: updatedItems,
                 totalAmount: updatedTotalAmount,
-                updatedNumOfTotalItems: updatedNumOfTotalItems
+                numOfTotalItems: updatedNumOfTotalItems
             }
 
         }
@@ -90,8 +89,8 @@ export const CartProvider = (props) => {
     const setCartItemAmountHandler = (item, newAmount) => {
         dispatchCartAction({type: 'SETAMOUNT',item: item, newAmount: newAmount});
     }
-    const removeItemFromCartHandler = (id) => {
-        dispatchCartAction({type: 'REMOVE', id: id});
+    const removeItemFromCartHandler = (item) => {
+        dispatchCartAction({type: 'REMOVE', item: item});
     }
     const cartContext = {
         items: cartState.items,

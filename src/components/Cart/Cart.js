@@ -2,12 +2,11 @@ import React, { useContext } from 'react'
 import CartItemList from './CartItemList'
 import CartContext from '../../store/cart-context'
 import classes from './Cart.module.css'
+import { Link } from 'react-router-dom'
 
 export const Cart = () => {
     const cartCtx = useContext(CartContext);
-    const checkOutHandler = () => {
-        console.log("test check out click");
-    }
+    const standardSubtotal = `$${cartCtx.totalAmount.toFixed(2)}`;
 
   return (
     <div className={classes.shoppingcart}>
@@ -15,7 +14,7 @@ export const Cart = () => {
         <div className={classes.summary}>
             <div className={classes.subtotal}>
                 <span>Subtotal:</span>
-                <span>${cartCtx.totalAmount}</span>
+                <span>{standardSubtotal}</span>
             </div>
             <div className={classes.totalitem}>
                 <span>Total items:</span>
@@ -26,7 +25,9 @@ export const Cart = () => {
          <CartItemList foodData={cartCtx.items}/>
         </div>
         <div className={classes.checkoutbutton}>
-            <button onClick={checkOutHandler}>Continue to check out</button>
+            <Link to="/checkout">
+                <button>Continue to checkout</button>
+            </Link>
         </div>
 
     </div>

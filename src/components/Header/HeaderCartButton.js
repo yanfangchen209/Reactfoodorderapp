@@ -7,14 +7,12 @@ import CartContext from '../../store/cart-context';
 export const HeaderCartButton = () => {
 
     const cartCtx = useContext(CartContext);
-    const {numOfTotalItems} = cartCtx;
-
 
   return (
     <button className={classes.cartbutton}>
         <FontAwesomeIcon icon={faShoppingCart} />
         <span>Cart</span>
-        <span className={classes.itemcount}>{numOfTotalItems}</span>
+        <span className={classes.itemcount}>{cartCtx.numOfTotalItems}</span>
     </button>
 
   )

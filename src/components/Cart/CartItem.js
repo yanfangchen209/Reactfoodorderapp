@@ -1,32 +1,38 @@
 import React, {useContext} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faTimes} from '@fortawesome/free-solid-svg-icons';
+import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import CartContext from '../../store/cart-context';
 import classes from './CartItem.module.css';
+
 
 export const CartItem = ({id, name, description, photo, amount, price}) => {
 
     const cartCtx = useContext(CartContext);
 
     const amountChangeHandler = (event) => {
-        cartCtx.setItemAmount({id, name, description, photo, amount, price}, event.target.value);
+        cartCtx.setItemAmount({
+            id: id, 
+            name: name, 
+            description: description, 
+            photo: photo, 
+            amount: amount, 
+            price: price}, parseInt(event.target.value));
     }
 
     const itemDeleteHandler = ()  => {
-        cartCtx.removeItem(id);
+        cartCtx.removeItem({id, name, description, photo, amount, price});
 
     }
 
   return (
         <div className={classes.cartitem}>
-            <div classesName={classes.description}>
-                <span>{name}</span>
-                <span>{description}</span>
-            </div>
             <div className={classes.foodphoto}>
                 <img src={photo} alt="food"/>
             </div>
-            <div classesName={classes.amountselect}>
+            <div className={classes.description}>
+                <span>{name}, {description}</span>
+            </div>
+            <div className={classes.amountselect}>
                 <select onChange={amountChangeHandler} value={amount}>
                     <option value="0">0(Delete)</option>
                     <option value="1">1</option>
@@ -36,8 +42,14 @@ export const CartItem = ({id, name, description, photo, amount, price}) => {
                     <option value="5">5</option>
                 </select>
             </div>
+            <div className={classes.shippingchoice}>
+                <input type="radio" name="shipping" value="delivery" checked/>
+                <label>Same Day Delivery with Fasty</label>
+                <input type="radio" name="shipping" value="pickup" />
+                <label>Order Pickup</label>
+            </div>
             <div className={classes.price}>${price}</div>
-            <FontAwesomeIcon icon={faTimes} onClick={itemDeleteHandler} />
+            <FontAwesomeIcon icon={faTrash} onClick={itemDeleteHandler} />
             {/*
             <div>
                 <input type="radio" id="pickup" name="shipping" value="pick-up"/>
