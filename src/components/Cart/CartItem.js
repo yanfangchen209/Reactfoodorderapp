@@ -42,12 +42,7 @@ export const CartItem = ({id, name, description, photo, amount, price}) => {
                     <option value="5">5</option>
                 </select>
             </div>
-            <div className={classes.shippingchoice}>
-                <input type="radio" name="shipping" value="delivery" checked/>
-                <label>Same Day Delivery with Fasty</label>
-                <input type="radio" name="shipping" value="pickup" />
-                <label>Order Pickup</label>
-            </div>
+
             <div className={classes.price}>${price}</div>
             <FontAwesomeIcon icon={faTrash} onClick={itemDeleteHandler} />
             {/*
