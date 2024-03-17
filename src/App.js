@@ -20,12 +20,45 @@ import curry from './assets/chickencurry.jpg'
 import burrito from './assets/veggieburrito.jpg'
 import cake from './assets/cake.jpg'
 import CartProvider from './store/CartProvider';
+import { useCallback, useEffect, useState } from 'react';
+import Header from './components/Header/Header';
 
 
 
 //photo: "https://i5.walmartimages.com/seo/Hello-Kitty-Round-Cake_c4c83c9b-b195-4c25-809e-0aef7d78059c.a706b7ad927e544723321452773153be.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"
 function App() {
 
+  const [mealData, setMealData] = useState([]);
+
+  const fetchFoodDataHandler = useCallback(async () => {
+    try{
+      const response =  await fetch("https://reactfoodapp-10ef5-default-rtdb.firebaseio.com/meals.json");
+      if(!response.ok){
+        throw new Error("Something went wrong!");
+      }
+
+      const data  = await response.json();
+      const loadedMeals = [];
+
+      for(const key in data){
+        loadedMeals.push({
+          id: data[key].id;
+          title: data[key].name;
+        })
+
+      }
+    }
+  }, []);
+
+  useEffect(){
+    async const  = fetch("https://reactfoodapp-10ef5-default-rtdb.firebaseio.com/")
+    method: get;
+    Header: typeofcontent("application/json")
+
+    await Response setMealData(response.data.)
+  }
+
+  /*
   const mealData = [
     {id: "e1", name:"Classic Beef Burger", description: "A juicy beef patty with fresh lettuce, tomatoes, onions, and special sauce", price: 8.992, photo: burger}, 
     {id: "e2", name: "Salmon Nigiri", description: "Fresh slices of salmon atop bite-sized portions of seasoned rice", price: 14.99, photo: sushi},
@@ -43,6 +76,7 @@ function App() {
 
 
   ];
+  */
 
 
   //pageNavigation act as a wrapper for comonents: HomePage, FoodList, CareerPage
