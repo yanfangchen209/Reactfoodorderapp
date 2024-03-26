@@ -7,6 +7,7 @@ import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
 import CartProvider from './store/CartProvider';
 import {useEffect, useState } from 'react';
+import './App.css';
 
 /*
 import burger from './assets/ClassicBeefBurger.jpg'
@@ -31,6 +32,7 @@ function App() {
 
   const [mealData, setMealData] = useState([]);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   // const foodPhotos = [burger, sushi, pizza, pasta, salad, sandwich, taco, steak, smoothie, icecream, 
   //   curry, burrito, cake];
 
@@ -66,6 +68,7 @@ function App() {
           })
         }
         setMealData(loadedMeals);
+        setIsLoading(false);
 
       }catch(error){
         setError(error.message);
@@ -117,15 +120,20 @@ function App() {
 
   ])
 
-
-
-
-  
+  if(isLoading){
+    return(
+    <div>
+      <p>Loading...</p>
+    </div>)
+  }
 
   return (
-    <CartProvider>
-      <RouterProvider router={router} />
-    </CartProvider>
+
+          <CartProvider>
+            <RouterProvider router={router} />
+          </CartProvider>
+
+
   );
 }
 
