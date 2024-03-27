@@ -6,8 +6,7 @@ import CareerPage from './components/Career/CareerPage';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
 import CartProvider from './store/CartProvider';
-import {useEffect, useState } from 'react';
-import './App.css';
+//import './App.css';
 
 /*
 import burger from './assets/ClassicBeefBurger.jpg'
@@ -30,58 +29,7 @@ import cake from './assets/cake.jpg'
 //photo: "https://i5.walmartimages.com/seo/Hello-Kitty-Round-Cake_c4c83c9b-b195-4c25-809e-0aef7d78059c.a706b7ad927e544723321452773153be.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"
 function App() {
 
-  const [mealData, setMealData] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  // const foodPhotos = [burger, sushi, pizza, pasta, salad, sandwich, taco, steak, smoothie, icecream, 
-  //   curry, burrito, cake];
 
-
-  /*useEffect(()=>{a; b}, [])
-      response.ok return true or false, Error is js builtin,interface Error {
-    name: string;
-    message: string;
-    stack?: string;*/
-    //http get request to get food data from firebase rest service
-  useEffect(() => {
-    const fetchFoodDataHandler = async () => {
-      try{
-        const response =  await fetch("https://reactfoodapp-10ef5-default-rtdb.firebaseio.com/meals.json");
-        if(!response.ok){
-          throw new Error("Something went wrong!");
-        }
-  
-        const data  = await response.json();
-        //data is js object: e1: {description:'', id: 'e1', name: 'gg', price: 22} e2: {description:'', id: 'e2', name: 'dd', price: 33}
-        //console.log(data);
-        const loadedMeals = [];
-
-        //relative path: images/cake.jpg     http://localhost:3002/images/cake.jpg
-        //absolute path: /images/cake.jpg    http://localhost:3002/images/cake.jpg
-        for(const key in data){
-          loadedMeals.push({
-            id: data[key].id,
-            name: data[key].name,
-            description: data[key].description,
-            price: data[key].price,
-            photo: data[key].photo
-          })
-        }
-        setMealData(loadedMeals);
-        setIsLoading(false);
-
-      }catch(error){
-        setError(error.message);
-      }
-    };
-
-
-
-    fetchFoodDataHandler();
-
-
-
-  }, []);
 
   /*
   const mealData = [
@@ -110,7 +58,7 @@ function App() {
     element: <CommonHeader  />,
     children: [
       {path: '/', element: <HomePage />},
-      {path: '/food', element: <FoodList mealData={mealData}/>},
+      {path: '/food', element: <FoodList />},
       {path: '/career', element: <CareerPage />},
       {path: '/cart', element: <Cart/>},
       {path: '/checkout', element: <Checkout />}
@@ -120,12 +68,7 @@ function App() {
 
   ])
 
-  if(isLoading){
-    return(
-    <div>
-      <p>Loading...</p>
-    </div>)
-  }
+
 
   return (
 

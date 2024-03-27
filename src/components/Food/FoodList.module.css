@@ -1,5 +1,21 @@
 /* FoodList.module.css */
 
+/* styles.css */
+.http-error-section {
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text color */
+  padding: 10px;
+  border: 1px solid #f5c6cb; /* Darker red border */
+  border-radius: 5px;
+}
+
+.http-error-message {
+  font-size: 16px;
+  margin: 0;
+  color: red;
+}
+
+
 .foodlist {
     display: flex;
     flex-wrap: wrap;
