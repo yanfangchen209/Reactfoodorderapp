@@ -1,0 +1,9 @@
+/* OrderConfirmation.module.css */
+
+.order-finish {
+    font-size: 25px;
+    text-align: center;
+    margin: 100px auto;
+    max-width: 600px;
+  }
+  

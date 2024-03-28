@@ -5,6 +5,7 @@ import FoodList from './components/Food/FoodList';
 import CareerPage from './components/Career/CareerPage';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
+import OrderConfirmation from './components/Checkout/OrderConfirmation';
 import CartProvider from './store/CartProvider';
 //import './App.css';
 
@@ -61,7 +62,8 @@ function App() {
       {path: '/food', element: <FoodList />},
       {path: '/career', element: <CareerPage />},
       {path: '/cart', element: <Cart/>},
-      {path: '/checkout', element: <Checkout />}
+      {path: '/checkout', element: <Checkout />},
+      {path: '/orderconfirmation', element: <OrderConfirmation />}
 
     ]
     }

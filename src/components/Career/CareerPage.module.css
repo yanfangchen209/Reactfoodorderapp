@@ -1,0 +1,23 @@
+/* CareerPage.module.css */
+
+.CareerPage {
+    text-align: left;
+    margin-top: 50px;
+  }
+  
+  .career-image {
+    width: 80%; /* Adjust the width as needed */
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto; /* Center the image horizontally */
+    display: block; /* Ensures margin: 0 auto; works properly */
+  }
+
+  .career-summary {
+    font-size: 36px;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: auto;
+    padding: 0 20px;
+  }
+  
