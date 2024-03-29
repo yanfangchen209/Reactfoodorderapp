@@ -1,10 +1,24 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef} from 'react'
 import { Link } from 'react-router-dom'
 import classes from './Checkout.module.css'
 import CartContext from '../../store/cart-context'
 
 export const Checkout = () => {
   const ctx = useContext(CartContext);
+  const firstNameInputRef = useRef();
+  const lastNameInputRef = useRef();
+
+
+  const enteredFirstName = firstNameInputRef.current.value;
+  const enteredLastName = lastNameInputRef.current.value;
+
+
+
+  //clear the shopping cart after placing order
+  const placeOrderButtonHandler = () => {
+    ctx.clearCart();
+    console.log(ctx.numOfTotalItems)
+  }
   return (
     <div>
       <div>
@@ -18,11 +32,11 @@ export const Checkout = () => {
       <form>
         <div>
           <label htmlFor='first'>First name: </label>
-          <input id='first' type='text' />
+          <input id='first' type='text' ref={firstNameInputRef}/>
         </div>
         <div>
           <label htmlFor='last'>Last name: </label>
-          <input id='last' type='text' />
+          <input id='last' type='text' ref={lastNameInputRef} />
         </div>
         <div>
           <label htmlFor='street'>Street: </label>
@@ -63,8 +77,8 @@ export const Checkout = () => {
         <h3>Add payment card</h3>
       </div>
       <div>
-        <Link to='/orderconfirmation'>
-          <button>Place your order</button>
+        <Link to='/OrderConfirmation'>
+          <button onClick={placeOrderButtonHandler}>Place your order</button>
         </Link>
       </div>
     </div>

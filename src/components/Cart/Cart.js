@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 export const Cart = () => {
     const cartCtx = useContext(CartContext);
     const standardSubtotal = `$${cartCtx.totalAmount.toFixed(2)}`;
+    const cartIsEmpty = cartCtx.numOfTotalItems === 0;
 
   return (
     <div className={classes.shoppingcart}>
@@ -25,8 +26,11 @@ export const Cart = () => {
          <CartItemList foodData={cartCtx.items}/>
         </div>
         <div className={classes.checkoutbutton}>
+            <Link to="/food">
+                {cartIsEmpty && <button>Cart Empty, Continue Shopping</button>}
+            </Link>
             <Link to="/checkout">
-                <button>Continue to checkout</button>
+                {!cartIsEmpty && <button>Continue to checkout</button>}
             </Link>
         </div>
 

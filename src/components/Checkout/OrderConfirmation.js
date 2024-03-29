@@ -3,7 +3,9 @@ import classes from './OrderConfirmation.module.css'
 
 const OrderConfirmation = () => {
   return (
-    <div className={classes['order-finish']}>Order sent successfully and details have been sent to your email example@***.com. Thank you for order!</div>
+    <div className={classes['order-finish']}>Thanks for your order!<br/>
+     We'll send confirmations and order updates to 
+     <br/>example@gmail.com </div>
   )
 }
 
