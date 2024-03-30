@@ -1,24 +1,75 @@
-import React, { useContext, useRef} from 'react'
+import React, { useContext, useState} from 'react'
 import { Link } from 'react-router-dom'
 import classes from './Checkout.module.css'
 import CartContext from '../../store/cart-context'
 
+//useState(), not ref
+
 export const Checkout = () => {
   const ctx = useContext(CartContext);
-  const firstNameInputRef = useRef();
-  const lastNameInputRef = useRef();
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [firstNameTouched, setFirstNameTouched] = useState(false);
+  const [lastNameTouched, setLastNameTouched] = useState(false);
+
+  const firstNameInputIsValid = !firstName.trim() === '';
+  const lastNameInputIsValid = !lastName.trim() === '';
 
 
-  const enteredFirstName = firstNameInputRef.current.value;
-  const enteredLastName = lastNameInputRef.current.value;
+
+  const firstNameIsInvalid = !firstNameInputIsValid && firstNameTouched;
+  const lastNameIsInvalid = !lastNameInputIsValid && lastNameTouched;
 
 
-
-  //clear the shopping cart after placing order
-  const placeOrderButtonHandler = () => {
-    ctx.clearCart();
-    console.log(ctx.numOfTotalItems)
+ 
+//every stroke
+  const firstNameChangeHandler = (e) => {
+    const enteredFirstName = e.target.value;
+    setFirstName(enteredFirstName);
+    setFirstNameTouched(true);
   }
+
+  //every stroke
+  const lastNameChangeHandler = (e) => {
+    const enteredLastName = e.target.value;
+    setLastName(enteredLastName);
+    setLastNameTouched(true);
+  }
+
+
+  const submitOrderHandler = async (userData) => {
+    await fetch('https://reactfoodapp-10ef5-default-rtdb.firebaseio.com/foodorder.json', {
+      method: 'POST',
+      body: JSON.stringify({user: userData})
+    })
+  }
+
+
+
+  const formSubmissionHandler = (e) => {
+    e.preventDefault();
+
+    //1. validate form validity
+    if(firstNameIsInvalid || lastNameIsInvalid ){
+      return;
+    }
+ 
+    //if all input are valid, get data object
+    const userEnteredData = {
+      firstName: firstName,
+      lastName: lastName
+    }
+
+    //2. send http post request to firebase
+    submitOrderHandler(userEnteredData);
+
+    //3. clear the shopping cart after placing order
+    ctx.clearCart();
+
+  }
+
+
   return (
     <div>
       <div>
@@ -29,58 +80,23 @@ export const Checkout = () => {
       <div>
         <h2>Shipping Address</h2>
       </div>
-      <form>
+      <form onSubmit={formSubmissionHandler}>
         <div>
           <label htmlFor='first'>First name: </label>
-          <input id='first' type='text' ref={firstNameInputRef}/>
+          <input id='first' type='text' value={firstName} 
+          onChange={firstNameChangeHandler}/>
+          {firstNameIsInvalid && <p>first name cannot be empty</p> }
         </div>
         <div>
           <label htmlFor='last'>Last name: </label>
-          <input id='last' type='text' ref={lastNameInputRef} />
+          <input id='last' type='text' value={lastName} 
+          onChange={lastNameChangeHandler}/>
+          {lastNameIsInvalid && <p>last name cannot be empty</p> }
         </div>
-        <div>
-          <label htmlFor='street'>Street: </label>
-          <input id='street' type='text' />
-        </div>
-        <div>
-          <label htmlFor='city'>City: </label>
-          <input id='city' type='text' />
-        </div>
-        <div>
-          <label htmlFor='postal'>Zip code: </label>
-          <input id='postal' type='text' />
-        </div>
-        <label htmlFor='state'>State: </label>
-        <select name="state">
-          <option type='text' value="Alaska">AK</option>
-          <option type="text" value="Arizona">AZ</option>
-          <option type="text" value="Colorado">CO</option>
-          <option type="text" value="Oklahoma">OK</option>
-          <option type="text" value="Texas">TX</option>
-        </select>
+      <div>
+          <button>Place your order</button>
+      </div>
       </form>
-      <div>
-        <h2>Payment</h2>
-        <h3>Select payment type</h3>
-        <div>
-          <input type="radio" id="paypal" name="payment"/>
-          <label htmlFor='paypal'>Pay with Paypal</label>
-        </div>
-        <div>
-          <input type="radio" id="discover" name="payment"/>
-          <label htmlFor='discover'>Pay with Discover</label>
-        </div>
-        <div>
-          <input type="radio" id="affirm" name="payment"/>
-          <label htmlFor='affirm'>Pay with Affirm</label>
-        </div>
-        <h3>Add payment card</h3>
-      </div>
-      <div>
-        <Link to='/OrderConfirmation'>
-          <button onClick={placeOrderButtonHandler}>Place your order</button>
-        </Link>
-      </div>
     </div>
   )
 }
