@@ -1,8 +1,76 @@
-button:disabled,
-button:disabled:hover,
-button:disabled:active {
-  background-color: #ccc;
-  color: #292929;
-  border-color: #ccc;
-  cursor: not-allowed;
-}
+.control {
+    margin-bottom: 10px;
+  }
+  .control label {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+  
+  .control input {
+    font: inherit;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 20rem;
+    max-width: 100%;
+  }
+  
+  .invalid {
+    color: red;
+  }
+  
+  .invalid input {
+    border-color: red;
+  }
+  
+  .invalid p {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+  
+  .checkOut {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .orderSummary {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .shippingAddress {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .payment {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .paymentInput {
+    margin-bottom: 5px;
+  }
+
+  
+  .placeOrderButton {
+
+  }
+  
+  .placeOrderButton button:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  .placeOrderButton button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
