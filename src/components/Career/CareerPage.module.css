@@ -3,6 +3,7 @@
 .CareerPage {
     text-align: left;
     margin-top: 50px;
+    padding:20px;
   }
   
   .career-image {
@@ -14,10 +15,10 @@
   }
 
   .career-summary {
-    font-size: 36px;
-    line-height: 1.5;
-    margin: 0 auto;
-    max-width: auto;
-    padding: 0 20px;
+
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: left;
   }
   

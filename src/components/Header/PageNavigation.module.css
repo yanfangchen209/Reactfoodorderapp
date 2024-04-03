@@ -29,3 +29,13 @@
 .list li a.active {
   color: #4caf4e; /* Active link color */
 }
+
+/*
+.button {
+  background-color: #021303;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+*/

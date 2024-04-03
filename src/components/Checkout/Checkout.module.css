@@ -1,3 +1,8 @@
+.checkOut {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
 .control {
     margin-bottom: 10px;
   }
@@ -34,13 +39,13 @@
   }
   
   .orderSummary {
-    border: 1px solid #ccc;
+
     padding: 10px;
     margin-bottom: 20px;
   }
   
   .shippingAddress {
-    border: 1px solid #ccc;
+    border: 1px transparent;
     padding: 10px;
     margin-bottom: 20px;
   }
@@ -51,7 +56,7 @@
   }
   
   .payment {
-    border: 1px solid #ccc;
+    border: 1px transparent;
     padding: 10px;
   }
   
@@ -59,18 +64,25 @@
     margin-bottom: 5px;
   }
 
-  
   .placeOrderButton {
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #32c964; /* Background color */
+    color: #fff; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Add border radius */
+    cursor: pointer; /* Cursor style */
+    font-size: 1rem; /* Font size */
+    max-width: 200px; /* Limit the maximum width */
 
   }
   
-  .placeOrderButton button:hover {
+  .placeOrderButton:hover {
     background-color: #0056b3;
   }
   
-  
-  .placeOrderButton button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+  .placeOrderButton:disabled {
+    background-color: #ccc; /* Change background color when disabled */
+    cursor: not-allowed; /* Change cursor when disabled */
   }
+  
   

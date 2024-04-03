@@ -14,7 +14,8 @@ export const Homepage = () => {
             location.
         </h3>
         <h3>Enjoy the convenience of tasty meals at your fingertips. Order now and treat yourself
-             to a hassle-free and delightful dining experience!</h3>
+             to a hassle-free and delightful dining experience!
+        </h3>
     </div>
   )
 }

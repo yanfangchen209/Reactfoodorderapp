@@ -9,7 +9,6 @@ export const Header = () => {
     <Fragment>
       <header className={classes.header}>
         <PageNavigation />
-        <button>Sign In</button>
       </header>
     </Fragment>
 

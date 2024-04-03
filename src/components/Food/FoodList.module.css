@@ -17,16 +17,24 @@
 
 
 .foodlist {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Default: Center items in the container */
+  padding: 20px;
+}
+
+.foodlist > div {
+  flex-grow: 1; /* Allow items to grow to fill the space */
+  margin-right: 10px; /* Add margin between items */
+}
+
+.foodlist > div:last-child {
+  margin-right: 0; /* Remove right margin for the last item in each row */
+}
+
+@media (max-width: 768px) {
+  .foodlist {
+      justify-content: flex-start; /* Align items to the left for smaller screens */
   }
-  
-  /* Optionally, you can add styles for responsiveness */
-  @media (max-width: 768px) {
-    .foodlist {
-      justify-content: center;
-    }
-  }
+}
   

@@ -1,4 +1,4 @@
-/* HomePage.module.css */
+
 
 .food-app-intro {
     text-align: center;
@@ -18,9 +18,10 @@
   }
   
   .food-app-intro h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 1.6;
     margin-bottom: 15px;
     text-align: left;
   }
-  
+
+

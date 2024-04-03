@@ -7,6 +7,8 @@ import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
 import OrderConfirmation from './components/Checkout/OrderConfirmation';
 import CartProvider from './store/CartProvider';
+import Login from './components/Header/Login';
+import Signup from './components/Header/Signup';
 //import './App.css';
 
 /*
@@ -47,7 +49,7 @@ function App() {
     {id: "e11", name: "Chicken Curry", description: "A hearty chicken curry with aromatic spices, served with basmati rice.", price: 13.99, photo: curry},
     {id: "e12", name: "Veggie Burrito", description: "A flavorful burrito filled with black beans, rice, sautéed vegetables, cheese, and salsa.", price: 8.99, photo: burrito},
     {id: "e13", name: "Chocolate Lava Cake", description: "A decadent chocolate lava cake with a gooey molten center, served with a scoop of vanilla ice cream.", price: 8.49, photo: cake}
-
+    //e13deleted
 
   ];
   */
@@ -62,12 +64,15 @@ function App() {
       {path: '/food', element: <FoodList />},
       {path: '/career', element: <CareerPage />},
       {path: '/cart', element: <Cart/>},
+
       {path: '/checkout', element: <Checkout />},
-      {path: '/orderconfirmation', element: <OrderConfirmation />}
-
+      {path: '/orderconfirmation', element: <OrderConfirmation />},
     ]
-    }
-
+    },
+    //define a separate route for the login page without CommonHeader
+    {path: '/login', element: <Login />},
+    {path: '/signup', element: <Signup />}
+    
   ])
 
 

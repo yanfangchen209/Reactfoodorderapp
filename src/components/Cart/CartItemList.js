@@ -6,7 +6,7 @@ import classes from './CartItemList.module.css'
 export const CartItemList = ({foodData}) => {
     //extract "items" property from cartCtx object
     //const {items} = cartCtx.items;
-    console.log(foodData)
+    //console.log(foodData)
   return (
     <ul className={classes.foodlist}>
         {foodData.map(item => <CartItem key={item.id} id={item.id} name={item.name} description={item.description} 

@@ -1,5 +1,5 @@
 import React, { useContext, useState} from 'react'
-import { Link, useNavigate} from 'react-router-dom'
+import { Link, redirect, useNavigate} from 'react-router-dom'
 import classes from './Checkout.module.css'
 import CartContext from '../../store/cart-context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -164,9 +164,9 @@ wrote to the database.
     }
 
     //2. send http post request to firebase, store user entered shipping addresss and ordered items info.
-    const response = await submitOrderHandler(userEnteredData, ctx.items);
-    //const data = await response.json();
-    console.log(response);
+   submitOrderHandler(userEnteredData, ctx.items);
+
+
     //3. clear the shopping cart after placing order
     ctx.clearCart();
 
@@ -188,6 +188,7 @@ wrote to the database.
 
     // Redirect to Order Confirmation page after successfully placing order.
     navigate('/orderconfirmation');
+    //return redirect('/');
   }
 
   const firstNameControlClasses = `${classes.control} ${firstNameIsValid ? '': classes.invalid}`;
@@ -288,9 +289,7 @@ wrote to the database.
               <label htmlFor='affirm'>Pay with Affirm</label>
             </div>
           </div>
-          <div className={classes.placeOrderButton}>
-              <button disabled={!formIsValid}>Place your order</button>
-          </div>
+          <button disabled={!formIsValid} className={classes.placeOrderButton}>Place your order</button>
         </form>
       </div>
     </div>
