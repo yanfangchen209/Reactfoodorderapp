@@ -132,6 +132,7 @@ wrote to the database.
 
     const res = await fetch('https://reactfoodapp-10ef5-default-rtdb.firebaseio.com/foodorder.json', {
       method: 'POST',
+      //JSON.stringify() accepts an object as its parameter. It takes the object and converts it into a JSON string representation.
       body: JSON.stringify({user: userData, orderedItems: cartItems})
     })
     return res;
@@ -165,8 +166,7 @@ wrote to the database.
 
     //2. send http post request to firebase, store user entered shipping addresss and ordered items info.
    submitOrderHandler(userEnteredData, ctx.items);
-
-
+ 
     //3. clear the shopping cart after placing order
     ctx.clearCart();
 

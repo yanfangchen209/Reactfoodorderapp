@@ -41,7 +41,7 @@ export const PageNavigation = () => {
         </li>
       </ul>
       <NavLink to='/login'>
-        <button>Sign in</button>
+        <button>Log in</button>
       </NavLink>
       <NavLink to='/signup'>
         <button>Sign up</button>
