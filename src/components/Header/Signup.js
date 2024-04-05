@@ -1,6 +1,7 @@
-import React, { useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import {Link} from 'react-router-dom'
+import classes from './Signup.module.css'
 
 /**
  * 1. form validation in backend
@@ -25,6 +26,7 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
+
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -47,9 +49,9 @@ const Signup = () => {
     const emailInputIsValid = enteredEmailIsValid(email);
     const firstNameInputIsValid = firstName.trim() !== '';
     const lastNameInputIsValid = lastName.trim() !== '';
-    const phoneNumberInputIsValid = enteredPhoneNumberIsValid(mobilePhone);
+    const phoneNumberInputIsValid = enteredPhoneNumberIsValid(mobilePhone) || mobilePhone === '';
     const passwordInputIsValid = password.trim().length >= 8;
-    const reenteredPasswordInputIsValid = reenteredPassword === password;
+    const reenteredPasswordInputIsValid = reenteredPassword.trim().length >= 8 && reenteredPassword === password;
 
     const emailIsValid = emailInputIsValid || ( !emailInputIsValid && !emailIsTouched);
     const firstNameIsValid = firstNameInputIsValid || ( !firstNameInputIsValid && !firstNameIsTouched);
@@ -120,43 +122,48 @@ const Signup = () => {
               throw new Error('Network response was not ok');
             }
           
-            const data = await response.json();
-            console.log('Success:', data);
+            //const data = await response.json();
+            //console.log('Success:', data);
           } catch (error) {
             console.error('Error:', error);
           }
 
- 
-
 
         //todo: redirect to log in page
-        navigate('/login');
+        //navigate('/login');
+        const signupMessage = 'You have successfully created a new account! Please log in to continue.';
+        //history.push(`/login?signupMessage=${signupMessage}`);
+        navigate('/login', { state: {message: signupMessage} });
 
     }
 
-    
-
+    const emailControlClasses = `${classes.control} ${emailIsValid ? '': classes.invalid}`;
+    const firstNameControlClasses = `${classes.control} ${firstNameIsValid ? '': classes.invalid}`;
+    const lastNameControlClasses = `${classes.control} ${lastNameIsValid ? '': classes.invalid}`;
+    const phoneControlClasses = `${classes.control} ${phoneIsValid ? '': classes.invalid}`;
+    const passwordControlClasses = `${classes.control} ${passwordIsValid ? '': classes.invalid}`;
+    const reenteredPasswordControlClasses = `${classes.control} ${reenteredPasswordIsValid ? '': classes.invalid}`;
 
 
     return (    
-    <div>
-        <h1>Create your GourmetGo account</h1>
-        <form onSubmit={formSubmissionHandler}>
-            <div>
+    <div className={classes.signup}>
+        <h2>Create your GourmetGo account</h2>
+        <form className={classes.signupForm} onSubmit={formSubmissionHandler}>
+            <div className={emailControlClasses}> 
                 <label htmlFor='email'>Email</label>
                 <input type='email' id='email' placeholder='Email address' value={email} 
                 onChange={emailChangeHandler}
                 onBlur={() => {setEmailTouched(true)}} />
                 {!emailIsValid && <p>Please enter a valid email address</p> }
             </div>
-            <div>
+            <div className={firstNameControlClasses}>
                 <label htmlFor='firstName'>First Name</label>
                 <input type='text' id='firstName' placeholder='first name' value={firstName} 
                 onChange={firstNameChangeHandler} 
                 onBlur={() => {setFirstNameTouched(true)}}/>
                 {!firstNameIsValid && <p>First name is required</p>}
             </div>
-            <div>
+            <div className={lastNameControlClasses}>
                 <label htmlFor='lastName'>Last Name</label>
                 <input type='text' id='lastName' placeholder='last name' value={lastName} 
                 onChange={lastNameChangeHandler}
@@ -164,39 +171,34 @@ const Signup = () => {
                 />
                 {!lastNameIsValid && <p>Last name is required</p>}
             </div>
-            <div>
+            <div className={phoneControlClasses}>
                 <label htmlFor='mobilePhone'>Mobile Phone</label>
                 <input type='tel' id='mobilePhone' placeholder='Mobile phone number(optional)' valu={mobilePhone} 
                 onChange={mobilePhoneChangeHandler}
                 onBlur={() => {setPhoneNumberTouched(true)}} />
                 {!phoneIsValid && <p>Phone number is invalid</p>}
             </div>
-            <div>
+            <div className={passwordControlClasses}>
                 <label htmlFor='password'>Password</label>
                 <input type='password' id='password' placeholder='at least 8 characters' value={password} 
                 onChange={passwordChangeHandler} 
                 onBlur={() => {setPasswordTouched(true)}}/>
                 {!passwordIsValid && <p>Password is invalid</p>}
             </div>
-            <div>
+            <div className={reenteredPasswordControlClasses}>
                 <label htmlFor='retype-password'>Re-enter Password</label>
                 <input type='password' id='retype-password' value={reenteredPassword} placeholder='confirm password'
                 onChange={reenteredPasswordChangeHandler} 
                 onBlur={() => {setReenteredPasswordTouched(true)}}/>
                 {!reenteredPasswordIsValid && <p>Passwords do not match</p>}
             </div>
-            <div>
+            <div className={classes.agreementTerms}>
                 <p>By creating an account, you are agreeing to the GourmetGo terms & conditions and GourmetGo privacy policy.</p>
                 <p>Terms & Conditions</p>
                 <p>Privacy Policy</p>
-            </div>
-            
-            <div>
-                <button>Create account</button>
-                <p>Already have an account? <Link to='/login'>Sign in</Link></p>
-            </div>
-
-
+            </div>        
+            <button type='submit' disabled={!formIsValid} className={classes.createButton}>Create account</button>
+            <p>Already have an account? <Link to='/login'>Sign in</Link></p>
         </form>
     </div>
     )

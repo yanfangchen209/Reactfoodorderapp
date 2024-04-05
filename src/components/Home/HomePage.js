@@ -6,7 +6,7 @@ export const Homepage = () => {
   return (
     <div className={classes['food-app-intro']}>
         <img src={background} alt='background' />
-        <h1>Delicious Food, Devered To You!</h1>
+        <h1>Delicious Food, Delivered To You!</h1>
         <h3>Your go-to destination for delicious meals delivered right to your doorstep! We 
             offer a mouthwatering selection of dishes, from comforting classics to exciting 
             flavors. Our simple and user-friendly app allows you to browse through a variety 

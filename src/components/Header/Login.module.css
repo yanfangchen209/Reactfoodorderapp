@@ -1,0 +1,92 @@
+/* Login.module.css */
+
+.login {
+    width: 100%;
+    max-width: 400px;
+    margin: 6rem auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .signupMessage {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #0066ff;
+  }
+  
+  .login h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .control {
+    margin-bottom: 20px;
+  }
+  
+  .control label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .control input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .invalid input {
+    border-color: #ff4d4f;
+  }
+  
+  .invalid p {
+    color: #ff4d4f;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .loginSubmitButton {
+    padding: 10px;
+    background-color: #0066ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .loginSubmitButton:hover {
+    background-color: #0052cc;
+  }
+  
+  .loginSubmitButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .loginSubmitButton:disabled:hover {
+    background-color: #ccc;
+  }
+  
+  .login p {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .login p a {
+    color: #0066ff;
+    text-decoration: none;
+  }
+  
+  .login p a:hover {
+    text-decoration: underline;
+  }
+  
+  
