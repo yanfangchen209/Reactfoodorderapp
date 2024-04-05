@@ -80,9 +80,11 @@ const cartReducer = (state, action) => {
 
     if(action.type === 'CLEAR'){
         return defaultCartState;
+        //return state;
     }
 
     return defaultCartState;
+    //return state;
 }
 
 

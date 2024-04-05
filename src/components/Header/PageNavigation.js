@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import {NavLink, useNavigate} from 'react-router-dom'
 import classes from './PageNavigation.module.css'
 import HeaderCartButton from './HeaderCartButton'
+import AuthContext from '../../store/auth-context'
 
 
 /**Here, the isActive property is automatically provided by react-router-dom. The className
@@ -11,10 +12,14 @@ import HeaderCartButton from './HeaderCartButton'
 export const PageNavigation = () => {
 
   const navigate = useNavigate();
+  const authCxt = useContext(AuthContext);
 
   const signOutHandler = () => {
     //remove token from client browser
     //localStorage.removeItem('token'); // Example: Using localStorage
+
+    //update ui: don't show sign out anymore
+    authCxt.signOut();
 
     //redirect to home page
     navigate('/')
@@ -41,12 +46,13 @@ export const PageNavigation = () => {
         </li>
       </ul>
       <NavLink to='/login'>
-        <button>Log in</button>
+       {!authCxt.isLoggedIn && <button>Log in</button>} 
       </NavLink>
       <NavLink to='/signup'>
-        <button>Sign up</button>
+       {!authCxt.isLoggedIn && <button>Sign up</button>}
       </NavLink>
-      <button onClick={signOutHandler}>Sign out</button>
+      {authCxt.isLoggedIn && <button onClick={signOutHandler}>Sign out</button>}
+
     </Fragment>
 
   )

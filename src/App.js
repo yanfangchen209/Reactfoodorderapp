@@ -9,6 +9,7 @@ import OrderConfirmation from './components/Checkout/OrderConfirmation';
 import CartProvider from './store/CartProvider';
 import Login from './components/Header/Login';
 import Signup from './components/Header/Signup';
+import AuthProvider from './store/AuthProvider';
 //import './App.css';
 
 /*
@@ -78,10 +79,12 @@ function App() {
 
 
   return (
+          <AuthProvider>
+            <CartProvider>
+              <RouterProvider router={router} />
+            </CartProvider>
+          </AuthProvider>
 
-          <CartProvider>
-            <RouterProvider router={router} />
-          </CartProvider>
 
 
   );

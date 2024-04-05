@@ -1,14 +1,17 @@
 import React, { useContext } from 'react'
 import CartItemList from './CartItemList'
 import CartContext from '../../store/cart-context'
+import AuthContext from '../../store/auth-context'
 import classes from './Cart.module.css'
 import { Link } from 'react-router-dom'
 
 export const Cart = () => {
     const cartCtx = useContext(CartContext);
+    const authCtx = useContext(AuthContext);
     const standardSubtotal = `$${cartCtx.totalAmount.toFixed(2)}`;
     const cartIsEmpty = cartCtx.numOfTotalItems === 0;
 
+    //if logged in, continue to checkout page, otherwise, go to log in page , after successfully logged in, go to checkout page.
   return (
     <div className={classes.shoppingcart}>
         <h1>Your Cart</h1>
@@ -30,7 +33,10 @@ export const Cart = () => {
                 {cartIsEmpty && <button>Cart Empty, Continue Shopping</button>}
             </Link>
             <Link to="/checkout">
-                {!cartIsEmpty && <button>Continue to checkout</button>}
+                {!cartIsEmpty && authCtx.isLoggedIn && <button>Continue to checkout</button>}
+            </Link>
+            <Link to='/login' state={{isSignInToCheckOut: "yes"}}>
+                {!cartIsEmpty && !authCtx.isLoggedIn && <button>Log in to checkout</button>}
             </Link>
         </div>
 

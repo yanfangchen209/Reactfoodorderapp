@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import React, { useContext, useState } from 'react'
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 import classes from './Login.module.css'
+import AuthContext from '../../store/auth-context'
 
 const enteredEmailIsValid = (email) => {
     //regular expression for validating email addresses
@@ -9,9 +10,19 @@ const enteredEmailIsValid = (email) => {
 }
 
 const Login = () => {
+    const authCxt = useContext(AuthContext);
+    const navigate = useNavigate();
+
     //get query string data from sign up message using  useLocation() hook from react-router-dom
+    /**When you access location.state.message directly without the conditional check (location.state ? 
+     * location.state.message : null), if location.state is null or undefined, it will throw an error 
+     * because you're trying to access a property (message) of something that is null or undefined. */
     const location = useLocation();
+    //send a message from sign up page to log in page when redirect to log in page
     const signupMessage = location.state ? location.state.message : null;
+    //redirect from cart page and carry a message so that after log in, it will go to check out page instead of homepage by default
+    const isSignInToCheckOut = location.state ? location.state.isSignInToCheckOut: null;
+
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -29,6 +40,7 @@ const Login = () => {
     const formIsValid = emailInputIsValid && passwordInputIsValid;
 
 
+
     const emailChangeHandler = (e) => {
         setEmail(e.target.value);
     }
@@ -39,7 +51,8 @@ const Login = () => {
 
     const loginFormSubmissionHandler = (e) => {
         e.preventDefault();
-        //1.todo: validate email and password
+
+        //1.validate form validity
         if(!formIsValid){
             return;
         }
@@ -50,7 +63,17 @@ const Login = () => {
         */
 
 
-        //3. todo: update UI: go to homepage, show sign out in header(no 'log in', no 'sign up')
+        //3. todo: update UI(using context): go to homepage, show sign out in header(no 'log in', no 'sign up')
+        authCxt.signIn();
+
+        //if it is not signintocheckout, go to home page directly
+        //if it is signintocheckout, go to checkout page to enter shipping info, payment and place order
+
+        if(isSignInToCheckOut === "yes"){
+            navigate('/checkout');
+        }else{
+            navigate('/');
+        }
     }
 
     const emailControlClass = `${classes.control} ${emailIsValid ? '': classes.invalid}`;
