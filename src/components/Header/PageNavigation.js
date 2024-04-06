@@ -45,14 +45,15 @@ export const PageNavigation = () => {
             </NavLink>
         </li>
       </ul>
-      <NavLink to='/login'>
-       {!authCxt.isLoggedIn && <button>Log in</button>} 
-      </NavLink>
-      <NavLink to='/signup'>
-       {!authCxt.isLoggedIn && <button>Sign up</button>}
-      </NavLink>
-      {authCxt.isLoggedIn && <button onClick={signOutHandler}>Sign out</button>}
-
+      <div className={classes.loginAndSignupAndSignout}>
+          <NavLink to='/login'>
+            {!authCxt.isLoggedIn && <button>Log in</button>} 
+          </NavLink>
+          <NavLink to='/signup'>
+            {!authCxt.isLoggedIn && <button>Sign up</button>}
+          </NavLink>
+          {authCxt.isLoggedIn && <button onClick={signOutHandler}>Sign out</button>}
+      </div>
     </Fragment>
 
   )

@@ -2,6 +2,7 @@ import React, { useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import classes from './Signup.module.css'
+import bcrypt from 'bcryptjs';
 
 /**
  * 1. form validation in backend
@@ -89,20 +90,31 @@ const Signup = () => {
         setreenteredPassword(e.target.value);
     }
 
+    const hashPassword = async (password) => {
+        try{
+            const hashedPassword = await bcrypt.hash(password, 10);
+            return hashedPassword;
+        }catch(error){
+            throw error;
+        }
+    }
+
     const formSubmissionHandler = async (e) => {
         e.preventDefault();
 
         if(!formIsValid){
             return;
         }
+
+
         //gather user entered data
         const userData = {
             email: email,
             firstName: firstName,
             lastName: lastName,
             phoneNumber: mobilePhone,
-            //to do
-            password: 'hashed password'
+            //don't forget await
+            password: await hashPassword(password)
         }
 
         //todo: http post request to backend ? firebase
