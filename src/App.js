@@ -34,7 +34,6 @@ import cake from './assets/cake.jpg'
 function App() {
 
 
-
   /*
   const mealData = [
     {id: "e1", name:"Classic Beef Burger", description: "A juicy beef patty with fresh lettuce, tomatoes, onions, and special sauce", price: 8.992, photo: burger}, 

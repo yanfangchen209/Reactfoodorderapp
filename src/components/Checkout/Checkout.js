@@ -1,5 +1,5 @@
 import React, { useContext, useState} from 'react'
-import { Link, redirect, useNavigate} from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import classes from './Checkout.module.css'
 import CartContext from '../../store/cart-context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

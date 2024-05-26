@@ -96,7 +96,7 @@ const Login = () => {
                 <input id='password' value={password} placeholder='Password' 
                 onChange={passwordChangeHandler} 
                 onBlur={() => {setPasswordTouched(true)}}/>
-                {!passwordIsValid && <p>Password is invalid</p>}
+                {!passwordIsValid && <p>Password length must be at least 8</p>}
             </div>
             <button className={classes.loginSubmitButtion} type='submit'>Sign In</button>
             <p>Forget password?</p>
